@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const ACCESS_TOKEN_SECRET = 'supersecretaccesstoken'; // Zmień na bezpieczny w produkcji
+const ACCESS_TOKEN_SECRET = 'supersecretaccesstoken';
 const TOKEN_EXPIRES_IN = '20m';
 
 function generateToken(user) {

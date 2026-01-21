@@ -24,7 +24,7 @@ const DB_CONFIG = {
 };
 
 if (!DB_CONFIG.password) {
-	console.warn('Warning: DB_PASSWORD is not set (empty password).');
+	console.log('Warning: DB_PASSWORD is not set (empty password).');
 }
 
 const con = mysql.createConnection(DB_CONFIG);
@@ -45,7 +45,6 @@ function normalizeDateInput(raw) {
 }
 
 function serviceActiveWhere(serviceIdExpr) {
-	// GTFS semantics:
 	// active_on_date = (calendar base service OR calendar_dates exception_type=1) AND NOT exception_type=2
 	return [
 		'AND (',
@@ -227,12 +226,7 @@ function getNextDeparturesFromStation({ stationName, date, time, limit = 10 }) {
 			return reject(new Error('stationName, date, time are required'));
 		}
 
-		let dateIso;
-		try {
-			dateIso = normalizeDateInput(dateStr);
-		} catch (e) {
-			return reject(e);
-		}
+		dateIso = normalizeDateInput(dateStr);
 
 		const parts = timeStr.split(':').map(x => Number(x));
 		const hours = parts[0];
@@ -313,7 +307,7 @@ function getNextDeparturesFromStation({ stationName, date, time, limit = 10 }) {
 						intermediate_stops: intermediateStops,
 					};
 				})
-					// Avoid showing "A -> A" results (e.g. loop/circular trips)
+					// A -> A
 					.filter(row => normalizeName(row.destination) !== requestedStationNorm);
 
 				resolve(result);
@@ -335,12 +329,7 @@ function getNextArrivalsToStation({ stationName, date, time, limit = 10 }) {
 			return reject(new Error('stationName, date, time are required'));
 		}
 
-		let dateIso;
-		try {
-			dateIso = normalizeDateInput(dateStr);
-		} catch (e) {
-			return reject(e);
-		}
+		dateIso = normalizeDateInput(dateStr);
 
 		const parts = timeStr.split(':').map(x => Number(x));
 		const hours = parts[0];
@@ -421,7 +410,7 @@ function getNextArrivalsToStation({ stationName, date, time, limit = 10 }) {
 						intermediate_stops: intermediateStops,
 					};
 				})
-					// Avoid showing "A -> A" results (e.g. loop/circular trips)
+					//A -> A
 					.filter(row => normalizeName(row.origin) !== requestedStationNorm);
 
 				resolve(result);
@@ -442,12 +431,7 @@ function getDirectConnections({ startStation, endStation, date, time, limit = 10
 			return reject(new Error('startStation, endStation, date, time are required'));
 		}
 
-		let dateIso;
-		try {
-			dateIso = normalizeDateInput(dateStr);
-		} catch (e) {
-			return reject(e);
-		}
+		dateIso = normalizeDateInput(dateStr);
 
 		const parts = timeStr.split(':').map(x => Number(x));
 		const hours = parts[0];
@@ -624,7 +608,6 @@ function timeToSec(t) {
 	return h * 3600 + m * 60 + s;
 }
 
-// Convenience wrapper (still promise-chain, no rollback)
 function createCustomDirectTripInsert({
 	route_id,
 	route_long_name,

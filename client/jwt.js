@@ -39,7 +39,7 @@ function getCurrentUser() {
 function isLoggedIn() {
 	const user = getCurrentUser();
 	if (!user) return false;
-	// Sprawdź czy token nie wygasł
+	//czy token nie wygasł
 	if (user.exp && Date.now() / 1000 > user.exp) return false;
 	return true;
 }
