@@ -1,4 +1,4 @@
-# TrainCheck (b1_projekt)
+# TrainCheck
 
 Aplikacja webowa do importu podstawowych danych GTFS do bazy MySQL oraz ich prezentacji w formie:
 - wyszukiwarki bezpośrednich,
@@ -6,14 +6,13 @@ Aplikacja webowa do importu podstawowych danych GTFS do bazy MySQL oraz ich prez
 - statystyk na bazie widoków SQL,
 - panelu administratora.
 
-## Szybki start
+## Uruchomienie projektu:
 
 ### 1) Instalacja zależności
 
 W katalogu projektu:
 
 ```bash
-cd b1_projekt
 npm install
 ```
 
@@ -27,7 +26,7 @@ Serwer startuje domyślnie na `http://localhost:5200`.
 
 ### 3) Uruchomienie klienta
 
-Otwórz `b1_projekt/index.html` w przeglądarce.
+Otwórz `index.html` w przeglądarce.
 
 ## Konfiguracja
 
