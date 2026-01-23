@@ -1,10 +1,10 @@
 # TrainCheck (b1_projekt)
 
 Aplikacja webowa do importu podstawowych danych GTFS do bazy MySQL oraz ich prezentacji w formie:
-- wyszukiwarki bezpośrednich połączeń (start/cel, data + godzina),
-- harmonogramu stacyjnego (odjazdy/przyjazdy + stacje pośrednie),
+- wyszukiwarki bezpośrednich,
+- harmonogramu stacyjnego,
 - statystyk na bazie widoków SQL,
-- panelu administratora (import GTFS + dodanie własnego kursu 2-przystankowego).
+- panelu administratora.
 
 ## Szybki start
 
@@ -27,7 +27,7 @@ Serwer startuje domyślnie na `http://localhost:5200`.
 
 ### 3) Uruchomienie klienta
 
-Otwórz `b1_projekt/index.html` w przeglądarce (lub przez dowolny statyczny serwer HTTP).
+Otwórz `b1_projekt/index.html` w przeglądarce.
 
 ## Konfiguracja
 
@@ -37,4 +37,4 @@ Otwórz `b1_projekt/index.html` w przeglądarce (lub przez dowolny statyczny ser
 
 ## Dokumentacja techniczna
 
-Szczegółowa dokumentacja dla rozwoju projektu znajduje się w: `docs/TECHNICAL.md`.
+Dokumentacja dla rozwoju projektu znajduje się w: `docs/TECHNICAL.md`.
